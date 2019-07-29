@@ -1,0 +1,86 @@
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  background-color: #2c001e;
+}
+
+.imgU {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.leftImg {
+  width: 150px;
+}
+
+.rightImg {
+  width: 80px;
+}
+
+.sub-cont {
+  display: flex;
+  margin-left: auto;
+}
+
+.sub-cont > div {
+  display: flex;
+}
+
+.flex-container {
+  display: flex;
+  margin: 8px;
+}
+a {
+  z-index: 200;
+}
+.top-img {
+  width: 24px;
+  margin-left: 14px;
+}
+
+.textarea {
+  position: fixed;
+  margin-top: 40px;
+  top: 0;
+  background: transparent;
+  border: 0;
+  color: white;
+  bottom: 0;
+  width: 100vw;
+  right: 0;
+  left: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.textarea:focus {
+    outline-width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.title {
+  color: white;
+  font-size: 24px
+}

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="title">
+        CodeBin
+      </div>
+      <span class="sub-cont">
+        <div>
+          <a href="#" id="add">
+            <img class="top-img" src="{% static 'image/new.png'%}" alt="new" />
+          </a>
+          <a href="#" id="edit">
+            <img class="top-img" src="{% static 'image/edit.png'%}" alt="new" />
+          </a>
+          <a href="#" id="save">
+            <img
+              class="top-img"
+              src="{% static 'image/save.png'%}"
+              alt="save"
+            />
+          </a>
+        </div>
+      </span>
+    </div>
+    <textarea class="textarea" id="code">{{code}}</textarea>
+    <div class="imgU">
+      <img class="rightImg" src="{% static 'image/ubuntu.png'%}" alt="ubuntu" />
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+
+    if(window.location.href !== 'http://localhost:8000/') {
+      $("#code").attr("disabled", true)
+    }
+
+    $(document).ready(function() {
+      $("#add").click(function(e) {
+        e.preventDefault();
+        window.location.href = 'http://localhost:8000'
+      });
+
+      $("#edit").click(function(e) {
+        e.preventDefault();
+        $("#code").attr("disabled", false);
+      });
+
+      $("#save").click(function(e) {
+        e.preventDefault();
+        const code = $("#code").val();
+        if (code !== "") {
+          $("#code").attr("disabled", true);
+          $.post(
+            "http://localhost:8000/addnew/",
+            {
+              code: $("#code").val()
+            },
+            function(data, textStatus, jqXHR) {
+              if (data.status === 200) {
+                window.history.pushState("", "", `/${data.url}`);
+              }
+            }
+          );
+        }
+      });
+    });
+  </script>
+</html>
